@@ -15,7 +15,7 @@ class RelasiKelasMahasiswaTable extends Migration
     {
         Schema::table('mahasiswa', function(Blueprint $table){
             $table->dropColumn('kelas');
-            $table->unsignedInteger('kelas_id')->nullable();
+            $table->unsignedBigInteger('kelas_id')->nullable();
             $table->foreign('kelas_id')->references('id')->on('kelas');
         });
     }
@@ -27,7 +27,7 @@ class RelasiKelasMahasiswaTable extends Migration
      */
     public function down()
     {
-        Schema::table('mahasiswa',function(Blueprint $table){
+        Schema::table('mahasiswa', function(Blueprint $table){
             $table->string('kelas');
             $table->dropForeign(['kelas_id']);
         });

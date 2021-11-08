@@ -25,7 +25,10 @@ class MahasiswaController extends Controller
         // with('i', (request()->input('page', 1) - 1) * 5);
         $mahasiswa = Mahasiswa::with('kelas')->get();
         $paginate = Mahasiswa::orderBy('Nim', 'asc')->paginate(3);
-        return view('mahasiswas.index', ['mahasiswa' => $mahasiswa,'paginate'=>$paginate]);
+        return view('mahasiswas.index', [
+            'mahasiswa' => $mahasiswa,
+            'paginate'=>$paginate
+        ]);
     }
 
     /**

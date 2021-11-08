@@ -25,6 +25,7 @@
         <tr>
             <th>Nim</th>
             <th>Nama</th>
+            <th>Foto</th>
             <th>Kelas</th>
             <th>Jurusan</th>
             <th>No_Handphone</th>
@@ -32,16 +33,16 @@
             <th>Tanggal Lahir</th>
             <th width="280px">Action</th>
         </tr>
-        @foreach ($mahasiswas as $Mahasiswa)
+        @foreach ($paginate as $Mahasiswa)
         <tr>
-            
             <td>{{ $Mahasiswa->Nim }}</td>
             <td>{{ $Mahasiswa->Nama }}</td>
-            <td>{{ $Mahasiswa->Kelas->nama_kelas }}</td>
+            <td><img src="{{asset('storage/'.$Mahasiswa->foto)}}" alt="" srcset="" height="100px" width="100px"></td>
+            <td>{{ $Mahasiswa->kelas->nama_kelas }}</td>
             <td>{{ $Mahasiswa->Jurusan }}</td>
             <td>{{ $Mahasiswa->No_Handphone }}</td>
-            <td>{{ $Mahasiswa->E_mail }}</td>
-            <td>{{ $Mahasiswa->Tanggal_Lahir }}</td>
+            <td>{{ $Mahasiswa->Email }}</td>
+            <td>{{ $Mahasiswa->TanggalLahir }}</td>
             <td>
             <form action="{{ route('mahasiswas.destroy',$Mahasiswa->Nim) }}" method="POST">
    
@@ -57,5 +58,5 @@
         </tr>
         @endforeach
     </table>
-    {{$mahasiswas -> links()}}
+    {{$paginate  -> links()}}
 @endsection
